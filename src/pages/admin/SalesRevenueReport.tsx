@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -11,6 +10,7 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { collection, query, where, getDocs, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { Order } from '@/types';
+import MonthlySalesChart from '@/components/admin/MonthlySalesChart';
 
 interface Transaction {
   id: string;
@@ -27,7 +27,6 @@ interface Transaction {
 }
 
 const SalesRevenueReport = () => {
-  const [activeTab, setActiveTab] = useState('transactions');
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -220,7 +219,7 @@ const SalesRevenueReport = () => {
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -254,6 +253,11 @@ const SalesRevenueReport = () => {
               </p>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Monthly Sales Chart */}
+        <div className="mb-8">
+          <MonthlySalesChart />
         </div>
 
         {/* Transactions Table */}
