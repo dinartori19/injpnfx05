@@ -2,7 +2,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Package, 
-  ShoppingCart, 
+  ShoppingCart,
+  BarChart,
   Users, 
   CheckCircle,
   Upload,
@@ -21,6 +22,12 @@ const AdminSidebar = () => {
       title: 'Dashboard',
       href: '/admin',
       icon: LayoutDashboard,
+    },
+    {
+      title: 'Laporan Penjualan',
+      href: '/admin/sales-report',
+      icon: BarChart,
+      description: 'Sales & Revenue'
     },
     {
       title: 'Konfirmasi Pesanan',
