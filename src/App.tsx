@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/hooks/useFirebaseAuth';
 import { LanguageProvider } from '@/hooks/useLanguage';
+import { LanguageProvider } from '@/hooks/useLanguage';
 import OfflineNotice from '@/components/OfflineNotice';
 import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import Index from '@/pages/Index';
@@ -15,6 +16,7 @@ import Referral from '@/pages/Referral';
 import HowToBuy from '@/pages/HowToBuy';
 import NotFound from '@/pages/NotFound';
 import CategoryPage from '@/pages/CategoryPage';
+import Kasir from '@/pages/Kasir';
 
 // Admin pages
 import Admin from '@/pages/Admin';
@@ -59,6 +61,7 @@ function App() {
       <AuthProvider>
         <LanguageProvider>
           <Router>
+            {/* Main Routes */}
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<Index />} />
@@ -94,6 +97,9 @@ function App() {
               <Route path="/admin/recycle-bin" element={<RecycleBin />} />
               <Route path="/admin/shipping-rates" element={<ShippingRates />} />
               <Route path="/admin/affiliate" element={<AffiliateManagement />} />
+
+              {/* Kasir Routes */}
+              <Route path="/kasir/*" element={<Kasir />} />
               
               {/* 404 route */}
               <Route path="*" element={<NotFound />} />
