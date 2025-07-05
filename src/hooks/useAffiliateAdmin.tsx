@@ -13,13 +13,10 @@ import {
   AffiliateUser, 
   AffiliateSettings,
   AffiliateReferral,
-  onSnapshot,
-  AffiliateCommission
-  getDocs,
-  orderBy,
-  limit
-}
-import { collection, query, onSnapshot, where, getDocs } from 'firebase/firestore';
+  AffiliateCommission,
+  AffiliatePayout
+} from '@/types/affiliate';
+import { collection, query, onSnapshot, where, getDocs, orderBy, limit } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 
 interface AffiliateAdminContextType {
